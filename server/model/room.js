@@ -1,4 +1,4 @@
-const { timeStamp } = require('console')
+
 const mongoose = require('mongoose')
 
 const roomschema = mongoose.Schema({
@@ -15,7 +15,10 @@ const roomschema = mongoose.Schema({
         required:true
     },
 
-    imgurl:[],
+    imgurl:{
+        type:Array,
+        required:true
+    },
 
     currentbookings:[],
 
@@ -25,13 +28,18 @@ const roomschema = mongoose.Schema({
     },
     description:{
         type:String,
-        required:true
+    
     }
 },
 {
 timeStamp : true,
+},
+
+{
+    collection:"room"
 }
 )
 
-const roomModel = mongoose.model('room',roomschema)
-module.exports= roomModel
+const roomModel =mongoose.model('room',roomschema);
+
+module.exports=roomModel
